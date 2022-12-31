@@ -17,7 +17,7 @@ body {
 	width: 300px;
 	height: 300px;
 	border-radius: 50%;
-	
+	border: 6px solid transparent;
 }
 .converter,
 .container {
@@ -53,13 +53,20 @@ body {
 	}
 	input:active,
 	input:focus {
-		
 		outline: 1px solid $react-blue;
 		box-shadow: 0px 0px 8px $react-blue;
 	}
 }
 
 .border-blue {
-	border: 6px solid white;
+	border: 6px solid blue;
+	box-shadow: 0 0 10px blue;
+}
+.border-green {
+	border: 6px solid green;
+	box-shadow: 0 0 10px green;
+}
+.border-red {
+	border: 6px solid red;
 	box-shadow: 0 0 10px red;
 }
