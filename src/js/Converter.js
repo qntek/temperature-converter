@@ -37,7 +37,6 @@ class Converter extends React.Component {
 				fahrenheit: +e.target.value,
 			});
 		}
-		
 	}
 
 	setBorderColor() {
@@ -45,18 +44,15 @@ class Converter extends React.Component {
 		box.className = 'container';
 
 		if (this.state.celsius <= 0) {
-			console.log(this.state.celsius);
 			box.className = 'container';
 			box.classList.add('border-blue');
 		} else if (this.state.celsius > 0 && this.state.celsius < 100) {
-			console.log(this.state.celsius);
 			box.className = 'container';
 			box.classList.add('border-green');
 		} else if (this.state.celsius >= 100) {
-			console.log(this.state.celsius);
 			box.className = 'container';
 			box.classList.add('border-red');
-		} 
+		}
 	}
 
 	render() {
@@ -64,7 +60,7 @@ class Converter extends React.Component {
 		const fahrenheit = Math.round(this.state.fahrenheit * 100) / 100;
 		this.setBorderColor();
 		return (
-			<div className='converter' onChange={this.setBorderColor}>
+			<div className='converter'>
 				<InputField value={celsius} onChange={this.celsiusOnChange} />
 				<InputField value={fahrenheit} onChange={this.fahrenheitOnChange} />
 			</div>

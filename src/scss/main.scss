@@ -59,14 +59,72 @@ body {
 }
 
 .border-blue {
-	border: 6px solid blue;
-	box-shadow: 0 0 10px blue;
+	border: 6px solid rgb(47, 105, 194);
+	box-shadow: 0 0 20px rgb(47, 105, 194);
+	transition: all 0.5s;
+	animation: animate-blue 2s linear;
 }
 .border-green {
-	border: 6px solid green;
-	box-shadow: 0 0 10px green;
+	border: 6px solid rgb(78, 170, 78);
+	box-shadow: 0 0 20px rgb(78, 170, 78);
+	transition: all 0.5s;
+	animation: animate-green 2s linear;
 }
 .border-red {
-	border: 6px solid red;
-	box-shadow: 0 0 10px red;
+	border: 6px solid rgb(143, 68, 68);
+	box-shadow: 0 0 20px rgb(143, 68, 68);
+	transition: all 0.5s linear;
+	animation: animate-red 2s linear;
+}
+
+@keyframes animate-blue {
+	0% {
+		box-shadow: 0 0 20px rgb(47, 105, 194);
+	}
+	20%{
+		box-shadow: 0 0 45px rgb(47, 105, 194);
+	}
+	50%{
+		box-shadow: 0 0 20px rgb(47, 105, 194);
+	}
+	80%{
+		box-shadow: 0 0 35px rgb(47, 105, 194);
+	}
+	100%{
+		box-shadow: 0 0 20px rgb(47, 105, 194);
+	}
+}
+@keyframes animate-green {
+	0% {
+		box-shadow: 0 0 20px rgb(78, 170, 78);
+	}
+	20%{
+		box-shadow: 0 0 45px rgb(78, 170, 78);
+	}
+	50%{
+		box-shadow: 0 0 20px rgb(78, 170, 78);
+	}
+	80%{
+		box-shadow: 0 0 35px rgb(78, 170, 78);
+	}
+	100%{
+		box-shadow: 0 0 20px rgb(78, 170, 78);
+	}
+}
+@keyframes animate-red {
+	0% {
+		box-shadow: 0 0 20px rgb(143, 68, 68);
+	}
+	20%{
+		box-shadow: 0 0 45px rgb(143, 68, 68);
+	}
+	50%{
+		box-shadow: 0 0 20px rgb(143, 68, 68);
+	}
+	80%{
+		box-shadow: 0 0 35px rgb(143, 68, 68);
+	}
+	100%{
+		box-shadow: 0 0 20px rgb(143, 68, 68);
+	}
 }
