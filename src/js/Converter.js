@@ -5,78 +5,51 @@ class Converter extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: 0,
-			unit: 'celsius',
+			celsius: '',
+			fahrenheit: '',
 		};
 		this.toCelsius = this.toCelsius.bind(this);
 		this.toFahrenheit = this.toFahrenheit.bind(this);
 		this.celsiusOnChange = this.celsiusOnChange.bind(this);
 		this.fahrenheitOnChange = this.fahrenheitOnChange.bind(this);
-		this.convert = this.convert.bind(this);
+		this.setBorderColor = this.setBorderColor.bind(this);
 	}
-
+	toFahrenheit(celsius) {
+		return (celsius * 9) / 5 + 32;
+	}
 	toCelsius(fahrenheit) {
 		return ((fahrenheit - 32) * 5) / 9;
 	}
 
-	toFahrenheit(celsius) {
-		return (celsius * 9) / 5 + 32;
-	}
-
 	celsiusOnChange(e) {
-		if (parseFloat(e.target.value)) {
+		if (!Number.isNaN(+e.target.value)) {
 			this.setState({
-				value: e.target.value,
-				unit: 'celsius',
-			})}
-			else {
-				this.setState({
-					value: 0,
-					unit: 'celsius',
-				})
-			}
+				celsius: e.target.value,
+				fahrenheit: this.toFahrenheit(e.target.value),
+			});
 		}
-	
+	}
 
 	fahrenheitOnChange(e) {
-		if (parseFloat(e.target.value)) {
+		if (!Number.isNaN(+e.target.value)) {
 			this.setState({
-				value: e.target.value,
-				unit: 'fahrenheit',
+				celsius: this.toCelsius(e.target.value),
+				fahrenheit: e.target.value,
 			});
-		} else {
-			this.setState({
-				value: 0,
-                unit: 'fahrenheit',
-			})
 		}
 	}
-	convert() {
-		let celsius;
-		let fahrenheit;
-		this.state.unit === 'celsius'
-			? (celsius = this.state.value)
-			: (celsius = this.toCelsius(this.state.value));
-		this.state.unit === 'fahrenheit'
-			? (fahrenheit = this.state.value)
-			: (fahrenheit = this.toFahrenheit(this.state.value));
-		return [Math.round(celsius*10)/10, Math.round(fahrenheit*1000)/1000];
+
+	setBorderColor() {
+		const box = document.querySelector('.container');
 	}
 
 	render() {
-		const temperatures = this.convert();
+		const celsius = Math.round(this.state.celsius * 10) / 10;
+		const fahrenheit = Math.round(this.state.fahrenheit * 100) / 100;
 		return (
-			<div className='converter'>
-				<InputField
-					value={temperatures[0]}
-					unit='celsius'
-					onChange={this.celsiusOnChange}
-				/>
-				<InputField
-					value={temperatures[1]}
-					unit='fahrenheit'
-					onChange={this.fahrenheitOnChange}
-				/>
+			<div className='converter' onChange={this.setBorderColor}>
+				<InputField value={celsius} onChange={this.celsiusOnChange} />
+				<InputField value={fahrenheit} onChange={this.fahrenheitOnChange} />
 			</div>
 		);
 	}

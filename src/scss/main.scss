@@ -1,45 +1,65 @@
 @import 'reset';
 
+$react-blue: #56d4fb;
+$react-grey: rgb(32, 35, 42);
+
 body {
 	width: 100vw;
 	height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	background-color: rgb(32, 35, 42);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $react-grey;
 }
-
-.converter, .container {
-	width: 280px;
-	height: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	background-color: rgb(32, 35, 42);
+.container {
+	padding: 10px;
+	overflow: hidden;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	
+}
+.converter,
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $react-grey;
+	
 }
 
 .converter {
-    width: 100%;height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 50%;
-    border: 8px solid white;
-    overflow: hidden;
-    input {
-        border: none;
-        width: 50%;
-        margin: 10px 0;
-        padding: 8px 16px;
-        font-size: 18px;
-        text-align: center;
-        border-radius: 25px;
-        outline: 1px solid #56d4fb;
-        box-shadow: 0px 0px 5px #56d4fb;
-        
-    }
-    input:active,
-    input:focus {
-        outline: 1px solid rgb(32, 35, 42);
-        box-shadow: 0px 0px 5px rgb(44, 48, 56);
-    }
+	width: 100%;
+	height: 100%;
+	background-color: $react-grey;
+	background-image: url('../images/circular-unit-arrows.svg');
+	background-size: contain;
+	display: flex;
+	flex-direction: column;
+
+	overflow: hidden;
+	input {
+		border: none;
+		width: 50%;
+		margin: 10px 0;
+		padding: 8px 16px;
+		font-size: 18px;
+		text-align: center;
+		border-radius: 25px;
+		background-color: rgb(204,204,204);
+		outline: 1px solid $react-grey;
+		box-shadow: 0px 0px 5px rgb(44, 48, 56);
+		transition: outline 0.3s, box-shadow 0.3s;
+	}
+	input:active,
+	input:focus {
+		
+		outline: 1px solid $react-blue;
+		box-shadow: 0px 0px 8px $react-blue;
+	}
+}
+
+.border-blue {
+	border: 6px solid white;
+	box-shadow: 0 0 10px red;
 }

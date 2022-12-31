@@ -10,7 +10,6 @@ class InputField extends React.Component {
 			<input
 				type='text'
 				value={this.props.value}
-				unit={this.props.unit}
 				onChange={this.props.onChange}
 			/>
 		);
