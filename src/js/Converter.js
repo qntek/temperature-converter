@@ -32,6 +32,13 @@ class Converter extends React.Component {
 
 	fahrenheitOnChange(e) {
 		if (!Number.isNaN(+e.target.value)) {
+			if (this.state.fahrenheit < 0) {
+				this.setState({
+					celsius: -17.8,
+					fahrenheit: 0,
+				});
+				return;
+			}
 			this.setState({
 				celsius: +this.toCelsius(e.target.value),
 				fahrenheit: +e.target.value,
