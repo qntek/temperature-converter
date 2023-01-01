@@ -5,8 +5,8 @@ class Converter extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			celsius: '',
-			fahrenheit: '',
+			celsius: 0,
+			fahrenheit: 32,
 		};
 		this.toCelsius = this.toCelsius.bind(this);
 		this.toFahrenheit = this.toFahrenheit.bind(this);
@@ -15,41 +15,40 @@ class Converter extends React.Component {
 		this.setBorderColor = this.setBorderColor.bind(this);
 	}
 	toFahrenheit(celsius) {
-		return (celsius * 9) / 5 + 32;
+		let result = (celsius * 9) / 5 + 32;
+		if (isNaN(result)) {
+			result = '';
+		}
+		return Math.round(result * 10) / 10;
 	}
 	toCelsius(fahrenheit) {
-		return ((fahrenheit - 32) * 5) / 9;
+		let result = ((fahrenheit - 32) * 5) / 9;
+		if (isNaN(result)) {
+			result = '';
+		}
+		return Math.round(result*100)/100;
 	}
 
 	celsiusOnChange(e) {
-		if (!Number.isNaN(+e.target.value)) {
-			this.setState({
-				celsius: +e.target.value,
-				fahrenheit: +this.toFahrenheit(e.target.value),
-			});
-		}
+		this.setState({
+			celsius: e.target.value,
+			fahrenheit: this.toFahrenheit(e.target.value),
+		});
 	}
 
 	fahrenheitOnChange(e) {
-		if (!Number.isNaN(+e.target.value)) {
-			if (this.state.fahrenheit < 0) {
-				this.setState({
-					celsius: -17.8,
-					fahrenheit: 0,
-				});
-				return;
-			}
-			this.setState({
-				celsius: +this.toCelsius(e.target.value),
-				fahrenheit: +e.target.value,
-			});
-		}
+		this.setState({
+			celsius: this.toCelsius(e.target.value),
+			fahrenheit: e.target.value,
+		});
 	}
 
 	setBorderColor() {
 		const box = document.getElementById('root');
 		box.className = 'container';
-
+		if (this.state.celsius === '' || this.state.fahrenheit === '') {
+			return;
+		}
 		if (this.state.celsius <= 0) {
 			box.className = 'container';
 			box.classList.add('border-blue');
@@ -63,8 +62,12 @@ class Converter extends React.Component {
 	}
 
 	render() {
-		const celsius = Math.round(this.state.celsius * 10) / 10;
-		const fahrenheit = Math.round(this.state.fahrenheit * 100) / 100;
+		let celsius = this.state.celsius;
+		let fahrenheit = this.state.fahrenheit;
+		if (celsius === '' || fahrenheit === '') {
+			celsius = '';
+			fahrenheit = '';
+		}
 		this.setBorderColor();
 		return (
 			<div className='converter'>

@@ -8,7 +8,7 @@ class InputField extends React.Component {
 	render() {
 		return (
 			<input
-				type='number'
+				type='text'
 				value={this.props.value}
 				onChange={this.props.onChange}
 			/>
