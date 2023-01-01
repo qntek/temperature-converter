@@ -1,6 +1,6 @@
-### React temperature converter
+## React temperature converter
 
-## My first react project.
+### My first react project.
 
 This simple calculator converts given temperature value from Celsius to Fahrenheit and opposite.
 
